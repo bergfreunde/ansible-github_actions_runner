@@ -121,7 +121,7 @@
 - name: "Give permissions again aon directory"
   ansible.builtin.file:
     path: "{{ runner_dir }}"
-    owner: {{ runner_user }}
+    owner: "{{ runner_user }}"
     recurse: true
 
 - name: START and enable Github Actions Runner service
