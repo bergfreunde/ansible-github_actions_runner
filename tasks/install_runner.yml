@@ -86,7 +86,6 @@
   args:
     chdir: "{{ runner_dir }}"
   become: true
-  become_user: "{{ runner_user }}"
   no_log: "{{ hide_sensitive_logs | bool }}"
   when: runner_name not in registered_runners.json.runners|map(attribute='name')|list
 
@@ -105,7 +104,6 @@
   args:
     chdir: "{{ runner_dir }}"
   become: true
-  become_user: "{{ runner_user }}"
   no_log: "{{ hide_sensitive_logs | bool }}"
   when: runner_name in registered_runners.json.runners|map(attribute='name')|list and reinstall_runner and not runner_org
 
