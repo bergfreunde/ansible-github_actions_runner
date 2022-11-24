@@ -118,6 +118,12 @@
     src: "{{ runner_dir }}/.service"
   register: runner_service
 
+- name: "Give permissions again aon directory"
+  ansible.builtin.file:
+    path: "{{ runner_dir }}"
+    owner: {{ runner_user }}
+    recurse: true
+
 - name: START and enable Github Actions Runner service
   ansible.builtin.systemd:
     name: "{{ runner_service.content | b64decode | replace('\n', '') }}"
